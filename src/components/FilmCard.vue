@@ -7,7 +7,7 @@ export default{
     },
     data(){
         return{
-            flagArray : ['it', 'en']
+            flagArray : ['it', 'en','es']
 
             
         }
