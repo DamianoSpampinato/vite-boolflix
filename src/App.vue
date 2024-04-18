@@ -20,7 +20,10 @@ export default{
 </script>
 
 <template>
-<AppContentContainer></AppContentContainer>
+  <main>
+
+    <AppContentContainer></AppContentContainer>
+  </main>
 </template>
 
 <style lang="scss">

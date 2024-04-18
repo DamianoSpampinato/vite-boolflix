@@ -76,7 +76,7 @@ export default{
 <style scoped lang="scss">
 .content-list{
     display: flex;
-    
+    overflow-y: clip;
     overflow-x: auto;
     width: 100%;
 }
