@@ -54,18 +54,18 @@ export default{
         <i v-else class="fa-solid fa-star"></i>
         <i v-if="Math.ceil(filmInfo.vote_average / 2)>=5" class="fa-solid fa-star color-gold"></i> 
         <i v-else class="fa-solid fa-star"></i>
+    </div>
 
         
 
 
           
 
-    </div>
         
 
 
 
-    <!-- VOTO MEDIO ARROTONDATO -->
+
    
 </div>
 </template>

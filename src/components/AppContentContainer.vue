@@ -63,17 +63,24 @@ export default{
 
 <template>
    <AppSearch @searchPerformed="getFilm(), getTvSeries()"></AppSearch>
-   <h1 v-show="store.filmArray">film</h1>
-   <div class="content-list">
-       <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
-    </div>
-    <h1>Serie Tv</h1>
-   <div class="content-list">
-       <FilmCard :filmInfo="series" v-for="series in store.tvSeriesArray" :key="series.id"></FilmCard>
+   <div class="container">
+       <h1 v-show="store.filmArray.length > 0">Film</h1>
+       <div class="content-list">
+           <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
+        </div>
+        <h1 v-show="store.tvSeriesArray.length > 0">Serie Tv</h1>
+        <div class="content-list">
+            <FilmCard :filmInfo="series" v-for="series in store.tvSeriesArray" :key="series.id"></FilmCard>
+        </div>
     </div>
 </template>
 
 <style scoped lang="scss">
+.container{
+    width:  1400px;
+    margin: 0 auto;
+}
+
 h1{
     color: red;
 }
@@ -82,5 +89,21 @@ h1{
     overflow-y: clip;
     overflow-x: auto;
     width: 100%;
+}
+::-webkit-scrollbar {
+    height: 10px;
+    background-color: black;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    transition: ease-in-out;
+  }
+::-webkit-scrollbar:hover{
+    height: 15px;
+}
+
+  ::-webkit-scrollbar-thumb {
+    background-image: radial-gradient(rgba(255, 0, 0, 0.822) 40%, black );
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 </style>
