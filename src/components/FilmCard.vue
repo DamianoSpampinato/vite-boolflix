@@ -6,19 +6,11 @@ export default{
         filmInfo: Object
     },
     data(){
-        flagArray: [
-            {
-                lang: 'it',
-                src: '../assets/img/it.png',
+        return{
+            flagArray : ['it', 'en']
+
             
-            },
-            {
-                lang: 'en',
-                src: '../assets/img/en.png',
-            
-            },
-        ]
-    
+        }
         
     },
     methods: {
@@ -36,13 +28,17 @@ export default{
 <div class="card">
     <h5>titolo: {{ filmInfo.title }}</h5>
     <small>titolo originale: {{ filmInfo.original_title }}</small>
-    <div v-if="getImageUrl(filmInfo.original_language) === `http://localhost:5173/src/components/undefined`">
-        LINGUA: {{ filmInfo.original_language }}
-    </div>
-    <div v-else class="img-container">
-        <img :src="getImageUrl(filmInfo.original_language)" :alt="`language: ${filmInfo.original_language}`">
+    <div v-if="flagArray.includes(filmInfo.original_language)">
+        <div class="img-container">
+            <img :src="getImageUrl(filmInfo.original_language)" :alt="`language: ${filmInfo.original_language}`">
+        </div>
         
     </div>
+     
+    <div v-else>
+        LINGUA: {{ filmInfo.original_language }}
+    </div>
+        
 
 
 
