@@ -64,20 +64,20 @@ export default{
 <template>
    <AppSearch @searchPerformed="getFilm(), getTvSeries()"></AppSearch>
    <h1>film</h1>
-   <div class="film-list">
+   <div class="content-list">
        <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
     </div>
     <h1>Serie Tv</h1>
-   <div class="film-list">
+   <div class="content-list">
        <FilmCard :filmInfo="series" v-for="series in store.tvSeriesArray" :key="series.id"></FilmCard>
     </div>
 </template>
 
 <style scoped lang="scss">
-.film-list{
+.content-list{
     display: flex;
-    height: 500px;
-    overflow-x: scroll;
+    
+    overflow-x: auto;
     width: 100%;
 }
 </style>

@@ -18,7 +18,8 @@ export default{
             
             return new URL(`../assets/img/${flag}.png`  , import.meta.url).href;
             
-            }
+            },
+        
     }
     
 
@@ -38,6 +39,9 @@ export default{
     <div v-else>
         LINGUA: {{ filmInfo.original_language }}
     </div>
+    <div v-show="filmInfo.poster_path" class="thumbnail">
+        <img :src="`https://image.tmdb.org/t/p/w342${filmInfo.poster_path}`" alt="">
+    </div>
         
 
 
@@ -53,6 +57,8 @@ export default{
     flex-shrink: 0;
     width: calc(100% / 5);
     border: 1px solid red;
+    position: relative;
+    height: 500px;
     .img-container{
         width: 70px;
         height: 70px;
@@ -60,6 +66,20 @@ export default{
             width: 100%;
             height: 100%;
         }
+    }
+    .thumbnail{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: 200ms ease-in-out;
+        opacity: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .thumbnail:hover {
+        opacity: 25%;
     }
 }
 </style>
