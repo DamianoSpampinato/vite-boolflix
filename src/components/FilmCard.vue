@@ -42,18 +42,38 @@ export default{
     <div v-show="filmInfo.poster_path" class="thumbnail">
         <img :src="`https://image.tmdb.org/t/p/w342${filmInfo.poster_path}`" alt="">
     </div>
+    <div >Voto medio: 
+        <i v-if="Math.ceil(filmInfo.vote_average / 2)>=1" class="fa-solid fa-star color-gold"></i>
+        <i v-else class="fa-solid fa-star"></i>
+        <i v-if="Math.ceil(filmInfo.vote_average / 2)>=2" class="fa-solid fa-star color-gold"></i>
+        <i v-else class="fa-solid fa-star"></i>
+
+        <i v-if="Math.ceil(filmInfo.vote_average / 2)>=3" class="fa-solid fa-star color-gold"></i>
+        <i v-else class="fa-solid fa-star"></i>
+        <i v-if="Math.ceil(filmInfo.vote_average / 2)>=4" class="fa-solid fa-star color-gold"></i>
+        <i v-else class="fa-solid fa-star"></i>
+        <i v-if="Math.ceil(filmInfo.vote_average / 2)>=5" class="fa-solid fa-star color-gold"></i> 
+        <i v-else class="fa-solid fa-star"></i>
+
+        
+
+
+          
+
+    </div>
         
 
 
 
     <!-- VOTO MEDIO ARROTONDATO -->
-    <div>{{ Math.ceil(this.filmInfo.vote_average) }}</div>
+   
 </div>
 </template>
 
 <style scoped lang="scss">
 .card{
     display: flex;
+    flex-direction: column;
     flex-shrink: 0;
     width: calc(100% / 5);
     border: 1px solid red;
@@ -80,6 +100,9 @@ export default{
     }
     .thumbnail:hover {
         opacity: 25%;
+    }
+    .color-gold{
+        color: gold;
     }
 }
 </style>

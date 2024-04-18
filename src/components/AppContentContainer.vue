@@ -63,7 +63,7 @@ export default{
 
 <template>
    <AppSearch @searchPerformed="getFilm(), getTvSeries()"></AppSearch>
-   <h1>film</h1>
+   <h1 v-show="store.filmArray">film</h1>
    <div class="content-list">
        <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
     </div>
@@ -74,6 +74,9 @@ export default{
 </template>
 
 <style scoped lang="scss">
+h1{
+    color: red;
+}
 .content-list{
     display: flex;
     overflow-y: clip;
