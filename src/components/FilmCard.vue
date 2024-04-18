@@ -26,8 +26,8 @@ export default{
 </script>
 <template>
 <div class="card">
-    <h5>titolo: {{ filmInfo.title }}</h5>
-    <small>titolo originale: {{ filmInfo.original_title }}</small>
+    <h5>titolo: {{ filmInfo.title || filmInfo.name}}</h5>
+    <small>titolo originale: {{ filmInfo.original_title || filmInfo.original_name }}</small>
     <div v-if="flagArray.includes(filmInfo.original_language)">
         <div class="img-container">
             <img :src="getImageUrl(filmInfo.original_language)" :alt="`language: ${filmInfo.original_language}`">
@@ -49,6 +49,9 @@ export default{
 
 <style scoped lang="scss">
 .card{
+    display: flex;
+    flex-shrink: 0;
+    width: calc(100% / 5);
     border: 1px solid red;
     .img-container{
         width: 70px;

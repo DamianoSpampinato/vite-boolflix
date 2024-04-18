@@ -23,6 +23,6 @@ export default{
 <AppContentContainer></AppContentContainer>
 </template>
 
-<style >
-
+<style lang="scss">
+@use './style/generic';
 </style>

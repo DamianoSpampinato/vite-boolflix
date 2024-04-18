@@ -25,31 +25,59 @@ export default{
             if(store.searchedContent !== ''){
                 QParams.query = store.searchedContent;
             }
-            
-            
-            
             axios.get('https://api.themoviedb.org/3/search/movie',{
                 params: QParams
                 
             })
         .then((response) => {
             this.store.filmArray = response.data.results;
-            console.log(store.filmArray)
+
             
         })
         
-        console.log(QParams)
-
-
+        },
+        getTvSeries(){
+            console.log('ho preso i film dalla api');
+            const QParams = {
+                api_key: 'de66ddafc47e3ea64eb8f30eb0014631',
+                
+            };
+            if(store.searchedContent !== ''){
+                QParams.query = store.searchedContent;
             }
+            axios.get('https://api.themoviedb.org/3/search/tv',{
+                params: QParams
+                
+            })
+        .then((response) => {
+            this.store.tvSeriesArray = response.data.results;
+            console.log(store.tvSeriesArray)
+            
+        })
+        
+        }
     }
 
 }
 </script>
 
 <template>
-   <AppSearch @searchPerformed="getFilm"></AppSearch>
-   <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
+   <AppSearch @searchPerformed="getFilm(), getTvSeries()"></AppSearch>
+   <h1>film</h1>
+   <div class="film-list">
+       <FilmCard :filmInfo="film" v-for="film in store.filmArray" :key="film.id"></FilmCard>
+    </div>
+    <h1>Serie Tv</h1>
+   <div class="film-list">
+       <FilmCard :filmInfo="series" v-for="series in store.tvSeriesArray" :key="series.id"></FilmCard>
+    </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.film-list{
+    display: flex;
+    height: 500px;
+    overflow-x: scroll;
+    width: 100%;
+}
+</style>
