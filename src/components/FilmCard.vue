@@ -9,9 +9,24 @@ export default{
         flagArray: [
             {
                 lang: 'it',
-               
-            }
+                src: '../assets/img/it.png',
+            
+            },
+            {
+                lang: 'en',
+                src: '../assets/img/en.png',
+            
+            },
         ]
+    
+        
+    },
+    methods: {
+        getImageUrl(flag) {
+            
+            return new URL(`../assets/img/${flag}.png`  , import.meta.url).href;
+            
+            }
     }
     
 
@@ -19,10 +34,14 @@ export default{
 </script>
 <template>
 <div class="card">
-    <h5>{{ filmInfo.title }}</h5>
-    <small>{{ filmInfo.original_title }}</small>
-    <div class="img-container">
-        <img :src="`/src/assets/img/${filmInfo.original_language}.png`" :alt="filmInfo.original_language">
+    <h5>titolo: {{ filmInfo.title }}</h5>
+    <small>titolo originale: {{ filmInfo.original_title }}</small>
+    <div v-if="getImageUrl(filmInfo.original_language) === `http://localhost:5173/src/components/undefined`">
+        LINGUA: {{ filmInfo.original_language }}
+    </div>
+    <div v-else class="img-container">
+        <img :src="getImageUrl(filmInfo.original_language)" :alt="`language: ${filmInfo.original_language}`">
+        
     </div>
 
 
